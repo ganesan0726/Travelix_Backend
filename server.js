@@ -23,10 +23,10 @@ app.use(
 );
 
 const connection = mysql.createConnection({
-  host: process.env.DB_HOST,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASSWORD,
-  database: process.env.DB_DATABASE,
+  host: "db4free.net",
+  user: "vcentry",
+  password: "test@123",
+  database: "travelix",
   port: 3306,
   waitForConnections: true,
   connectionLimit: 10,
@@ -166,10 +166,9 @@ app.post("/api/upload/hotelLists", async (request, response) => {
 // Search Hotels : /api/list/hotelLists?hotelLocation==Mumbai,India
 // Get Hotels = Get Method
 app.get("/api/list/hotelLists", async (request, response) => {
-
   let sqlQuery;
   const location = request.query.hotelLocation;
-  if(location == undefined || location == ""){
+  if (location == undefined || location == "") {
     sqlQuery = "SELECT * FROM ganesan_hotelsList";
   } else {
     sqlQuery = `SELECT * FROM ganesan_hotelsList WHERE hotelLocation='${location}'`;
